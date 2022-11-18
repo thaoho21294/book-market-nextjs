@@ -3,6 +3,7 @@ import { ReactElement } from 'react'
 import { Button, Dimmer, Form, Icon, Loader } from 'semantic-ui-react'
 import FormInput from '../../components/FormInput'
 import styles from '../../styles/Login.module.scss'
+import { loginValidationSchema } from '../../schema/validationSchema'
 
 const Login = () => {
   const formik = useFormik({
@@ -13,6 +14,7 @@ const Login = () => {
     onSubmit: (values) => {
       alert(JSON.stringify(values))
     },
+    validationSchema: loginValidationSchema,
   })
   return (
     <div className={styles['login-container']}>
