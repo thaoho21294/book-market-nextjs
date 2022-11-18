@@ -6,6 +6,7 @@ import RootLayout from '../components/RootLayout'
 import 'semantic-ui-css/semantic.min.css'
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  // eslint-disable-next-line no-unused-vars
   getLayout?: (page: ReactElement) => ReactNode
 }
 
