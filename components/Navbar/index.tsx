@@ -1,24 +1,37 @@
 import React, { useState } from 'react'
-import { Input, Menu } from 'semantic-ui-react'
+import { Dropdown, Icon, Input, Menu } from 'semantic-ui-react'
 
 const Navbar = () => {
-  const [activeItem, setActiveItem] = useState('home')
+  const [activeItem, setActiveItem] = useState('')
+  const countryOptions = [
+    { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
+    { key: 'ax', value: 'ax', flag: 'ax', text: 'Aland Islands' },
+    { key: 'al', value: 'al', flag: 'al', text: 'Albania' },
+    { key: 'dz', value: 'dz', flag: 'dz', text: 'Algeria' },
+  ]
   return (
     <Menu secondary fixed="top">
-      <Menu.Item
-        name="home"
-        active={activeItem === 'home'}
-        onClick={() => {
-          setActiveItem('home')
-        }}
-      />
-      <Menu.Item
-        name="messages"
-        active={activeItem === 'messages'}
-        onClick={() => {
-          setActiveItem('home')
-        }}
-      />
+      <Menu.Header>
+        <Icon name="book" size="big" circular color="green"></Icon>
+      </Menu.Header>
+      <Menu.Item>
+        <Dropdown
+          placeholder="Select Country"
+          fluid
+          search
+          selection
+          options={countryOptions}
+        />
+      </Menu.Item>
+      <Menu.Item>
+        <Dropdown
+          placeholder="Select Country"
+          fluid
+          search
+          selection
+          options={countryOptions}
+        />
+      </Menu.Item>
       <Menu.Item
         name="friends"
         active={activeItem === 'friends'}
