@@ -11,9 +11,9 @@ const Navbar = () => {
   ]
   return (
     <Menu secondary fixed="top">
-      <Menu.Header>
+      <Menu.Item>
         <Icon name="book" size="big" circular color="green"></Icon>
-      </Menu.Header>
+      </Menu.Item>
       <Menu.Item>
         <Dropdown
           placeholder="Select Country"
