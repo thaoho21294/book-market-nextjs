@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const RootLayout = ({ children }: React.PropsWithChildren) => {
   return (
@@ -7,7 +7,7 @@ const RootLayout = ({ children }: React.PropsWithChildren) => {
       <main>{children}</main>
       <>Your footer here</>
     </>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout

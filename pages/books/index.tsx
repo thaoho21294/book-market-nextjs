@@ -1,5 +1,5 @@
 const Books = () => {
-  return <>This page using common layout </>;
-};
+  return <>This page using common layout </>
+}
 
-export default Books;
+export default Books

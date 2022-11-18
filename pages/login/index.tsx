@@ -1,11 +1,11 @@
-import { ReactElement } from "react";
+import { ReactElement } from 'react'
 
 const Login = () => {
-  return <>this page is not using default layout </>;
-};
+  return <>this page is not using default layout </>
+}
 
 Login.getLayout = function getLayout(page: ReactElement) {
-  return <>{page}</>;
-};
+  return <>{page}</>
+}
 
-export default Login;
+export default Login
