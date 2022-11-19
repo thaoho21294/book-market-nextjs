@@ -1,13 +1,14 @@
-import React from "react";
+import React from 'react'
+import Navbar from '../Navbar'
 
 const RootLayout = ({ children }: React.PropsWithChildren) => {
   return (
     <>
-      <>Your navbar here</>
+      <Navbar />
       <main>{children}</main>
       <>Your footer here</>
     </>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout
