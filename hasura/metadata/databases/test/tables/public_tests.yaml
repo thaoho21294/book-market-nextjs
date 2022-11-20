@@ -1,0 +1,20 @@
+table:
+  schema: public
+  name: tests
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - name
+      filter: {}
+      limit: 100
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - name
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      check: null

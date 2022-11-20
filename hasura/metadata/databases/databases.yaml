@@ -1,0 +1,16 @@
+- name: default
+  kind: postgres
+  configuration:
+    connection_info:
+      use_prepared_statements: false
+      database_url: postgres://thaoho21294:sw8dCNRq3tPe@dry-unit-851025.cloud.neon.tech/main?options=project%3Ddry-unit-851025&sslmode=require
+      isolation_level: read-committed
+  tables: "!include default/tables/tables.yaml"
+
+- name: test
+  kind: postgres
+  configuration:
+    connection_info:
+      use_prepared_statements: false
+      database_url: postgres://thaoho21294:ltrP9obTLA2S@wandering-field-046183.us-east-2.aws.neon.tech/main?options=project%3Dwandering-field-046183&sslmode=require
+  tables: "!include test/tables/tables.yaml"
