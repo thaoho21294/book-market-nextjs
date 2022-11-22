@@ -15,7 +15,6 @@ const Navbar = () => {
     { key: 'dz', value: 'dz', flag: 'dz', text: 'Algeria' },
   ]
 
-  console.log(user)
   if (loading) {
     return <>Loading...</>
   }
