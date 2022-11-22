@@ -17,7 +17,7 @@ const Navbar = () => {
 
   console.log(user)
   if (loading) {
-    return 'Loading....'
+    return <>Loading...</>
   }
   return (
     <Menu secondary fixed="top">
