@@ -1,7 +1,12 @@
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import { Dropdown, Icon, Input, Menu } from 'semantic-ui-react'
+import { Dropdown, Icon, Image, Input, Menu } from 'semantic-ui-react'
+import { useFetchUser } from '../../lib/user'
 
 const Navbar = () => {
+  const { user, loading } = useFetchUser({ required: false })
+  const router = useRouter()
+
   const [activeItem, setActiveItem] = useState('')
   const countryOptions = [
     { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
@@ -9,6 +14,11 @@ const Navbar = () => {
     { key: 'al', value: 'al', flag: 'al', text: 'Albania' },
     { key: 'dz', value: 'dz', flag: 'dz', text: 'Algeria' },
   ]
+
+  console.log(user)
+  if (loading) {
+    return 'Loading....'
+  }
   return (
     <Menu secondary fixed="top">
       <Menu.Item>
@@ -49,13 +59,32 @@ const Navbar = () => {
             }}
           />
         </Menu.Item>
-        <Menu.Item
-          name="logout"
-          active={activeItem === 'logout'}
-          onClick={() => {
-            setActiveItem('logout')
-          }}
-        />
+        {!user && (
+          <Menu.Item
+            name="login"
+            active={activeItem === 'login'}
+            onClick={() => {
+              router.push('/api/login')
+              setActiveItem('login')
+            }}
+          />
+        )}
+        {user && (
+          <>
+            <Menu.Item>
+              <Image alt="" src={user.picture} avatar />
+              <span>{user.nickname}</span>
+            </Menu.Item>
+            <Menu.Item
+              name="logout"
+              active={activeItem === 'logout'}
+              onClick={() => {
+                router.push('/api/logout')
+                setActiveItem('logout')
+              }}
+            />
+          </>
+        )}
       </Menu.Menu>
     </Menu>
   )
