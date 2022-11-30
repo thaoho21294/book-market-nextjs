@@ -1,29 +1,21 @@
-import config from '../../lib/cloudinary-config'
-import { useState } from 'react'
-import axios from 'axios'
-import { AdvancedImage } from '@cloudinary/react'
-import { Cloudinary } from '@cloudinary/url-gen'
-
-const uploadAgent = axios.create({
-  headers: {
-    'X-Requested-With': 'XMLHttpRequest',
-  },
-})
-
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: config.cloud_name,
-  },
-})
+import { AdvancedImage, responsive } from '@cloudinary/react'
+import { useRef } from 'react'
+import useUploadImage from '../../hooks/useUploadImage'
+import styles from '../../styles/Photos.module.scss'
 
 const PhotoUploader = () => {
-  const [files, setFiles] = useState<FileList | null>()
-  console.log({ files })
-  const myImage = cld.image('aiozux1an9ftpoi3rnip')
+  const { imagesUploaded, upload, setFiles } = useUploadImage()
+  const ref = useRef<HTMLInputElement>(null)
+  const resetInput = () => {
+    if (ref.current) {
+      ref.current.value = ''
+    }
+  }
+
   return (
-    <div className="upload_button_holder">
-      <AdvancedImage cldImg={myImage} />
+    <div className={styles['container']}>
       <input
+        ref={ref}
         type="file"
         id="fileupload"
         accept="image/*"
@@ -32,25 +24,12 @@ const PhotoUploader = () => {
         }}
       />
       <br />
-      <button
-        onClick={() => {
-          const url = `https://api.cloudinary.com/v1_1/${config.cloud_name}/upload`
-
-          if (files != null) {
-            for (let i = 0; i < files.length; i++) {
-              const file = files[i]
-              const fd = new FormData()
-              fd.append('upload_preset', config.upload_preset)
-              fd.append('tags', 'samples')
-              fd.append('file', file)
-              console.log(file)
-              uploadAgent.post(url, fd)
-            }
-          }
-        }}
-      >
-        Upload
-      </button>
+      <button onClick={() => upload(resetInput)}>Upload</button>
+      <div className={styles['images']}>
+        {imagesUploaded.map((img, index) => (
+          <AdvancedImage key={index} cldImg={img} plugins={[responsive()]} />
+        ))}
+      </div>
     </div>
   )
 }
