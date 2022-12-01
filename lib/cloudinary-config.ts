@@ -11,4 +11,8 @@ export const cloud = new Cloudinary({
   },
 })
 
+export function getUploadUrl() {
+  return process.env.CLOUDINARY_URL?.concat(`/v1_1/${config.cloud_name}/upload`)
+}
+
 export default config

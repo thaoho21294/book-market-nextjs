@@ -1,5 +1,5 @@
 import axios from '../lib/axios'
-import config, { cloud } from '../lib/cloudinary-config'
+import config, { cloud, getUploadUrl } from '../lib/cloudinary-config'
 import { useState } from 'react'
 import { CloudinaryImage } from '@cloudinary/url-gen'
 
@@ -10,7 +10,7 @@ const useUploadImage = () => {
     []
   )
   const upload = async (callback: () => void) => {
-    const url = `https://api.cloudinary.com/v1_1/${config.cloud_name}/upload`
+    const url = getUploadUrl()
 
     if (files != null) {
       try {
@@ -20,13 +20,14 @@ const useUploadImage = () => {
           fd.append('upload_preset', config.upload_preset)
           fd.append('tags', 'samples')
           fd.append('file', file)
-          const { data } = await axios.post(url, fd)
+          const { data } = await axios.post(url ?? '', fd)
           setImagesUploaded([...imagesUploaded, cloud.image(data.public_id)])
           setFiles(null)
           callback()
         }
       } catch (err) {
         setFiles(null)
+        callback()
         throw err
       }
     }
