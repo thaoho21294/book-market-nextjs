@@ -1,7 +1,9 @@
 import axios from '../lib/axios'
-import config, { cloud, getUploadUrl } from '../lib/cloudinary-config'
+import { cloud, getUploadUrl } from '../lib/cloudinary-utils'
 import { useState } from 'react'
 import { CloudinaryImage } from '@cloudinary/url-gen'
+
+const uploadPreset = process.env.NEXT_PUBLIC_UPLOAD_PRESET ?? ''
 
 const useUploadImage = () => {
   const [files, setFiles] = useState<FileList | null>()
@@ -17,7 +19,7 @@ const useUploadImage = () => {
         for (let i = 0; i < files.length; i++) {
           const file = files[i]
           const fd = new FormData()
-          fd.append('upload_preset', config.upload_preset)
+          fd.append('upload_preset', uploadPreset)
           fd.append('tags', 'samples')
           fd.append('file', file)
           const { data } = await axios.post(url ?? '', fd)
