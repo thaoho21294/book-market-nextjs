@@ -19,7 +19,7 @@ const Navbar = () => {
     return <>Loading...</>
   }
   return (
-    <Menu secondary fixed="top">
+    <Menu secondary>
       <Menu.Item>
         <Icon name="book" size="big" circular color="green"></Icon>
       </Menu.Item>
