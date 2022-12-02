@@ -24,10 +24,10 @@ function Tests({
   const [limit, setLimit] = useState(DEFAULT_TESTS_LIMIT)
   const [localTests, setLocalTest] = useState(tests)
 
-  const onClickMoreProduct = () => {
-    const newLimit = limit * 2
+  const onClickMoreProduct = async () => {
+    const newLimit = limit + 2
     setLimit(newLimit)
-    fetchTests(newLimit).then((data) => {
+    await fetchTests(newLimit).then((data) => {
       setLocalTest(data.tests)
     })
   }
@@ -40,7 +40,7 @@ function Tests({
           <li key={test.id}>{test.name}</li>
         ))}
       </ul>
-      <button onClick={onClickMoreProduct}>more product</button>
+      <button onClick={(onClickMoreProduct)}>more product</button>
     </>
   )
 }
