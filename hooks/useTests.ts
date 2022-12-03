@@ -1,7 +1,14 @@
-import { useQuery } from '@tanstack/react-query'
-import graphqlRequest from '../lib/hasura/graphqlRequest'
+import useSWR from 'swr'
+import { graphqlRequest, clientGraphqlRequest } from '../lib/harsura'
+import { gql } from 'graphql-request'
 
-const testsQueryDocument = `
+export const DEFAULT_TESTS_LIMIT = 3
+export interface Test {
+  id: number
+  name: string
+}
+
+const testsQueryDocument = gql`
   query getTests($limit: Int = 10) {
     tests(limit: $limit) {
       id
@@ -10,14 +17,22 @@ const testsQueryDocument = `
   }
 `
 
-const fetchTests = async (limit = 10) => {
-  return graphqlRequest(testsQueryDocument, {
+const fetchTests = async (limit = DEFAULT_TESTS_LIMIT) => {
+  return graphqlRequest<{ tests: Array<Test> }>(testsQueryDocument, {
     limit,
   })
 }
 
-const useTests = (limit = 10) => {
-  return useQuery(['tests', limit], () => fetchTests(limit))
+const clientFetchTests = async (limit = DEFAULT_TESTS_LIMIT) => {
+  return clientGraphqlRequest<{ tests: Array<Test> }>(testsQueryDocument, {
+    limit,
+  })
 }
 
-export { fetchTests, useTests }
+const useTests = (limit: number) => {
+  return useSWR('tests', () => fetchTests(limit))
+}
+
+export { fetchTests, useTests, clientFetchTests }
+
+export default useTests

@@ -1,48 +1,62 @@
 import { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import { useState } from 'react'
-import { fetchTests, DEFAULT_TESTS_LIMIT } from '../../lib/hasura/fetchTests'
-
-interface Test {
-  id: number
-  name: string
-}
+import { SWRConfig } from 'swr'
+import {
+  useTests,
+  fetchTests,
+  DEFAULT_TESTS_LIMIT,
+  Test,
+  clientFetchTests,
+} from '../../hooks/useTests'
 
 // This gets called on every request
 export const getServerSideProps: GetServerSideProps<{
-  tests: Array<Test>
+  fallback: { tests: { tests: Array<Test> } }
 }> = async () => {
   // Fetch data from external API
   const data = await fetchTests()
 
   // Pass data to the page via props
-  return { props: { tests: data.tests } }
+  return { props: { fallback: { tests: data } } }
 }
 
-function Tests({
-  tests,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+function Tests() {
   const [limit, setLimit] = useState(DEFAULT_TESTS_LIMIT)
-  const [localTests, setLocalTest] = useState(tests)
-
+  const { data, isValidating, mutate } = useTests(limit)
   const onClickMoreProduct = async () => {
-    const newLimit = limit + 2
-    setLimit(newLimit)
-    await fetchTests(newLimit).then((data) => {
-      setLocalTest(data.tests)
-    })
+    const tests = await clientFetchTests(limit * 2)
+    mutate(tests)
+    setLimit(limit * 2)
   }
+
+  if (isValidating || !data) return <div>Loading...</div>
 
   return (
     <>
       <h2>This data is fetch from server side</h2>
       <ul>
-        {localTests.map((test) => (
+        {data.tests.map((test) => (
           <li key={test.id}>{test.name}</li>
         ))}
       </ul>
-      <button onClick={(onClickMoreProduct)}>more product</button>
+      <button onClick={onClickMoreProduct}>more product</button>
     </>
   )
 }
 
-export default Tests
+export default function Page({
+  fallback,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  return (
+    <SWRConfig
+      value={{
+        fallback,
+        revalidateIfStale: false,
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false,
+      }}
+    >
+      <Tests />
+    </SWRConfig>
+  )
+}
