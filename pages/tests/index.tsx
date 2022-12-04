@@ -1,41 +1,25 @@
-import { InferGetServerSidePropsType, GetServerSideProps } from 'next'
+import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
-import { SWRConfig } from 'swr'
-import {
-  useTests,
-  fetchTests,
-  DEFAULT_TESTS_LIMIT,
-  Test,
-  clientFetchTests,
-} from '../../hooks/useTests'
-
-// This gets called on every request
-export const getServerSideProps: GetServerSideProps<{
-  fallback: { tests: { tests: Array<Test> } }
-}> = async () => {
-  // Fetch data from external API
-  const data = await fetchTests()
-
-  // Pass data to the page via props
-  return { props: { fallback: { tests: data } } }
-}
+import { clientFetchTests, DEFAULT_TESTS_LIMIT } from '../../hooks/useTests'
 
 function Tests() {
   const [limit, setLimit] = useState(DEFAULT_TESTS_LIMIT)
-  const { data, isValidating, mutate } = useTests(limit)
-  const onClickMoreProduct = async () => {
-    const tests = await clientFetchTests(limit * 2)
-    mutate(tests)
-    setLimit(limit * 2)
+
+  const { data, isLoading } = useQuery(['tests', limit], () =>
+    clientFetchTests(limit)
+  )
+
+  const onClickMoreProduct = () => {
+    setLimit(limit + 1)
   }
 
-  if (isValidating || !data) return <div>Loading...</div>
+  if (isLoading) return <div>Loading...</div>
 
   return (
     <>
       <h2>This data is fetch from server side</h2>
       <ul>
-        {data.tests.map((test) => (
+        {data?.tests.map((test) => (
           <li key={test.id}>{test.name}</li>
         ))}
       </ul>
@@ -44,19 +28,18 @@ function Tests() {
   )
 }
 
-export default function Page({
-  fallback,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return (
-    <SWRConfig
-      value={{
-        fallback,
-        revalidateIfStale: false,
-        revalidateOnFocus: false,
-        revalidateOnReconnect: false,
-      }}
-    >
-      <Tests />
-    </SWRConfig>
+export async function getStaticProps() {
+  const queryClient = new QueryClient()
+
+  await queryClient.prefetchQuery(['tests', DEFAULT_TESTS_LIMIT], () =>
+    clientFetchTests(DEFAULT_TESTS_LIMIT)
   )
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
 }
+
+export default Tests
