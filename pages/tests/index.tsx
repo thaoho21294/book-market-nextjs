@@ -28,15 +28,17 @@ function Tests() {
   )
 }
 
-export async function getStaticProps() {
+export const getServerSideProps = async () => {
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery(['tests', DEFAULT_TESTS_LIMIT], () =>
+  // prefetch data on the server
+  await queryClient.fetchQuery(['tests', DEFAULT_TESTS_LIMIT], () =>
     clientFetchTests(DEFAULT_TESTS_LIMIT)
   )
 
   return {
     props: {
+      // dehydrate query cache
       dehydratedState: dehydrate(queryClient),
     },
   }
