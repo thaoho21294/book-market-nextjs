@@ -1,8 +1,11 @@
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useState } from 'react'
 import { clientFetchTests, DEFAULT_TESTS_LIMIT } from '../../hooks/useTests'
 
-function Tests() {
+function Tests({
+  isError,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [limit, setLimit] = useState(DEFAULT_TESTS_LIMIT)
 
   const { data, isLoading } = useQuery(['tests', limit], () =>
@@ -12,6 +15,8 @@ function Tests() {
   const onClickMoreProduct = () => {
     setLimit(limit + 1)
   }
+
+  if (isError) return <>Error page</>
 
   if (isLoading) return <div>Loading...</div>
 
@@ -28,16 +33,22 @@ function Tests() {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const queryClient = new QueryClient()
 
-  // prefetch data on the server
-  await queryClient.fetchQuery(['tests', DEFAULT_TESTS_LIMIT], () =>
-    clientFetchTests(DEFAULT_TESTS_LIMIT)
-  )
+  let isError = false
+  try {
+    // prefetch data on the server
+    await queryClient.fetchQuery(['tests', DEFAULT_TESTS_LIMIT], () =>
+      clientFetchTests(DEFAULT_TESTS_LIMIT)
+    )
+  } catch (err) {
+    isError = true
+  }
 
   return {
     props: {
+      isError,
       // dehydrate query cache
       dehydratedState: dehydrate(queryClient),
     },
