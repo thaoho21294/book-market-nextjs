@@ -1,6 +1,6 @@
-import useSWR from 'swr'
 import { graphqlRequest, clientGraphqlRequest } from '../lib/harsura'
 import { gql } from 'graphql-request'
+import { useQuery } from '@tanstack/react-query'
 
 export const DEFAULT_TESTS_LIMIT = 3
 export interface Test {
@@ -30,7 +30,7 @@ const clientFetchTests = async (limit = DEFAULT_TESTS_LIMIT) => {
 }
 
 const useTests = (limit: number) => {
-  return useSWR('tests', () => fetchTests(limit))
+  return useQuery(['tests', limit], () => clientFetchTests(limit))
 }
 
 export { fetchTests, useTests, clientFetchTests }
