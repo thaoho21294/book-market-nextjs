@@ -13,7 +13,7 @@ function Tests({
   )
 
   const onClickMoreProduct = () => {
-    setLimit(limit + 1)
+    setLimit(limit + 2)
   }
 
   if (isError) return <>Error page</>
@@ -28,7 +28,7 @@ function Tests({
           <li key={test.id}>{test.name}</li>
         ))}
       </ul>
-      <button onClick={onClickMoreProduct}>more product</button>
+      <button onClick={onClickMoreProduct}>2 more products</button>
     </>
   )
 }
