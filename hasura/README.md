@@ -13,8 +13,6 @@ hasura migrate apply
 ## Reset metadata and migration
 
 ```
-export HASURA_GRAPHQL_ADMIN_SECRET=xxxx
-
 hasura metadata apply
 hasura migrate apply --database-name=xxx
 hasura metadata reload
