@@ -1,6 +1,6 @@
 import request from 'graphql-request'
 
-export default async function graphqlRequest<T>(query: string, params: object) {
+export default function graphqlRequest<T>(query: string, params: object) {
   return request<T>(process.env.API_ENDPOINT || '', query, params, {
     'x-hasura-admin-secret': process.env.HASURA_ADMIN_SECRET || '',
   })
