@@ -1,0 +1,15 @@
+table:
+  schema: public
+  name: districts
+object_relationships:
+  - name: province
+    using:
+      foreign_key_constraint_on: province_id
+array_relationships:
+  - name: users
+    using:
+      foreign_key_constraint_on:
+        column: district_id
+        table:
+          schema: public
+          name: users

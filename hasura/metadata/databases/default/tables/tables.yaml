@@ -1,2 +1,5 @@
-- "!include public_books.yaml"
-- "!include public_users.yaml"
+- '!include public_districts.yaml'
+- '!include public_provinces.yaml'
+- '!include public_genres.yaml'
+- '!include public_books.yaml'
+- '!include public_users.yaml'
