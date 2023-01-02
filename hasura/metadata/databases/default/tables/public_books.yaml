@@ -5,41 +5,60 @@ object_relationships:
   - name: user
     using:
       foreign_key_constraint_on: user_id
+  - name: genre
+    using:
+      foreign_key_constraint_on: genre_id
 insert_permissions:
   - role: user
     permission:
       check:
         user_id:
-          _eq: X-Hasura-User-Id
+          _eq: X-HASURA-USER-ID
       set:
-        user_id: x-hasura-user-id
+        id: X-HASURA-USER-ID
       columns:
         - title
-        - is_sold
+        - author
+        - price
+        - original_price
+        - status
+        - description
+        - pictures
+        - genre_id
+        - user_id
 select_permissions:
   - role: user
     permission:
       columns:
-        - created_at
         - id
-        - is_sold
         - title
+        - author
+        - price
+        - original_price
+        - status
+        - description
+        - pictures
+        - genre_id
         - user_id
+        - created_at
+        - updated_at
       filter:
-        _or:
-          - is_sold:
-              _eq: "false"
-          - user_id:
-              _eq: X-HASURA-USER-ID
-      limit: 100
+        user_id:
+          _eq: X-HASURA-USER-ID
 update_permissions:
   - role: user
     permission:
       columns:
         - title
+        - author
+        - price
+        - original_price
+        - status
+        - description
+        - genre_id
       filter:
         user_id:
-          _eq: X-Hasura-User-Id
+          _eq: X-HASURA-USER-ID
       check: null
 delete_permissions:
   - role: user
@@ -47,4 +66,4 @@ delete_permissions:
       backend_only: false
       filter:
         user_id:
-          _eq: X-Hasura-User-Id
+          _eq: X-HASURA-USER-ID

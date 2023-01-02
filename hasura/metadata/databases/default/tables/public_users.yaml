@@ -1,6 +1,13 @@
 table:
   schema: public
   name: users
+object_relationships:
+  - name: district
+    using:
+      foreign_key_constraint_on: district_id
+  - name: province
+    using:
+      foreign_key_constraint_on: province_id
 array_relationships:
   - name: books
     using:
@@ -11,11 +18,20 @@ array_relationships:
           name: books
 select_permissions:
   - role: user
+    check:
+      user_id:
+        _eq: X-HASURA-USER-ID
     permission:
       columns:
         - id
         - name
+        - username
+        - email
         - password
+        - picture
+        - description
+        - district_id
+        - province_id
       filter: {}
       limit: 100
 update_permissions:
@@ -23,6 +39,11 @@ update_permissions:
     permission:
       columns:
         - name
+        - picture
+        - password
+        - description
+        - district_id
+        - province_id
       filter:
         id:
           _eq: X-Hasura-User-Id
