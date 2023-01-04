@@ -1,62 +1,48 @@
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import { Dropdown, Icon, Image, Input, Menu } from 'semantic-ui-react'
+import { Icon, Image, Menu } from 'semantic-ui-react'
+import { menuItems } from '../../constants'
 import { useFetchUser } from '../../lib/user'
+import styles from '../../styles/Navbar.module.scss'
 
 const Navbar = () => {
   const { user, loading } = useFetchUser({ required: false })
   const router = useRouter()
 
   const [activeItem, setActiveItem] = useState('')
-  const countryOptions = [
-    { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
-    { key: 'ax', value: 'ax', flag: 'ax', text: 'Aland Islands' },
-    { key: 'al', value: 'al', flag: 'al', text: 'Albania' },
-    { key: 'dz', value: 'dz', flag: 'dz', text: 'Algeria' },
-  ]
+  const renderMenuItem = () => {
+    return menuItems.map(({ name, url }, index) => (
+      <Menu.Item
+        key={index}
+        name={name}
+        active={activeItem === name}
+        onClick={() => {
+          router.push(url)
+          setActiveItem(name)
+        }}
+      />
+    ))
+  }
 
   if (loading) {
     return <>Loading...</>
   }
+
   return (
-    <Menu secondary>
+    <Menu fixed="top" secondary className={styles['menu-container']}>
       <Menu.Item>
-        <Icon name="book" size="big" circular color="green"></Icon>
+        <Icon name="book" size="big" circular color="green" />
       </Menu.Item>
-      <Menu.Item>
-        <Dropdown
-          placeholder="Select Country"
-          fluid
-          search
-          selection
-          options={countryOptions}
-        />
-      </Menu.Item>
-      <Menu.Item>
-        <Dropdown
-          placeholder="Select Country"
-          fluid
-          search
-          selection
-          options={countryOptions}
-        />
-      </Menu.Item>
-      <Menu.Item
-        name="friends"
-        active={activeItem === 'friends'}
-        onClick={() => {
-          setActiveItem('friends')
-        }}
-      />
+      {renderMenuItem()}
       <Menu.Menu position="right">
         <Menu.Item>
-          <Input
-            icon="search"
-            placeholder="Search..."
-            onClick={() => {
-              setActiveItem('search')
-            }}
-          />
+          <Icon name="book" />
+        </Menu.Item>
+        <Menu.Item>
+          <Icon name="search" />
+        </Menu.Item>
+        <Menu.Item>
+          <Icon name="cart" />
         </Menu.Item>
         {!user && (
           <Menu.Item

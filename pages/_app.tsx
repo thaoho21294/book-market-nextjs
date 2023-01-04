@@ -1,9 +1,10 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ReactElement, ReactNode, useState } from 'react'
 import { NextPage } from 'next'
 import RootLayout from '../components/RootLayout'
 import 'semantic-ui-css/semantic.min.css'
+import '../styles/globals.css'
+
 import {
   Hydrate,
   QueryClient,
