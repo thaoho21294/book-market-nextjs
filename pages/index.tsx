@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import BookCard from '../components/BookCard'
 import { Button } from 'semantic-ui-react'
