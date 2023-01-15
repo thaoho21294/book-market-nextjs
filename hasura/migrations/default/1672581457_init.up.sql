@@ -3,7 +3,7 @@ SET check_function_bodies = false;
 SET escape_string_warning = off;
 
 CREATE TABLE public.genres (
-    id integer PRIMARY KEY,
+    id varchar PRIMARY KEY,
     name text NOT NULL,
     slug varchar NOT NULL
 );
@@ -18,81 +18,42 @@ CREATE TABLE public.books (
     original_price integer,
     pictures jsonb DEFAULT NULL,
     is_sold boolean DEFAULT false NOT NULL,
-    genre_id integer NOT NULL,
-    user_id integer NOT NULL,
+    genre_id varchar NOT NULL,
+    user_id varchar NOT NULL,
     updated_at timestamp with time zone DEFAULT now(),
     created_at timestamp with time zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE public.districts (
-    id integer PRIMARY KEY,
+    id varchar PRIMARY KEY,
     name text NOT NULL,
     slug varchar NOT NULL,
-    province_id integer NOT NULL
+    province_id varchar NOT NULL
 );
 
 CREATE TABLE public.provinces (
-    id integer PRIMARY KEY,
+    id varchar PRIMARY KEY,
     slug varchar NOT NULL,
     name text NOT NULL
 );
 
 CREATE TABLE public.users (
-    id integer PRIMARY KEY,
+    id varchar PRIMARY KEY,
     name text,
-    password varchar NOT NULL,
-    username varchar,
+    password varchar,
+    nickname text,
     email varchar NOT NULL,
     email_verified boolean DEFAULT false,
     picture varchar,
     description text,
-    district_id integer,
-    province_id integer,
+    district_id varchar,
+    province_id varchar,
     updated_at timestamp with time zone DEFAULT now(),
     created_at timestamp with time zone DEFAULT now() NOT NULL,
+    last_seen timestamp with time zone DEFAULT now(),
     CONSTRAINT email_unique UNIQUE (email),
-    CONSTRAINT username_unique UNIQUE (username)
+    CONSTRAINT id_unique UNIQUE (id)
 );
-
-CREATE SEQUENCE public.genres_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    RESTART WITH 1;
-ALTER SEQUENCE public.genres_id_seq OWNED BY public.genres.id;
-ALTER TABLE ONLY public.genres ALTER COLUMN id SET DEFAULT nextval('public.genres_id_seq'::regclass);
-
-CREATE SEQUENCE public.districts_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    RESTART WITH 1;
-ALTER SEQUENCE public.districts_id_seq OWNED BY public.districts.id;
-ALTER TABLE ONLY public.districts ALTER COLUMN id SET DEFAULT nextval('public.districts_id_seq'::regclass);
-
-CREATE SEQUENCE public.provinces_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    RESTART WITH 1;
-ALTER SEQUENCE public.provinces_id_seq OWNED BY public.provinces.id;
-ALTER TABLE ONLY public.provinces ALTER COLUMN id SET DEFAULT nextval('public.provinces_id_seq'::regclass);
-
-CREATE SEQUENCE public.users_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    RESTART WITH 1;
-ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
-ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
 CREATE SEQUENCE public.books_id_seq
     AS integer

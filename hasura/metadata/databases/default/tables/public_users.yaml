@@ -25,13 +25,14 @@ select_permissions:
       columns:
         - id
         - name
-        - username
+        - nickname
         - email
         - password
         - picture
         - description
         - district_id
         - province_id
+        - last_seen
       filter: {}
       limit: 100
 update_permissions:
@@ -39,6 +40,7 @@ update_permissions:
     permission:
       columns:
         - name
+        - nickname
         - picture
         - password
         - description

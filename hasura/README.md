@@ -26,7 +26,7 @@ hasura seed apply --file 1672581457_initialSeed.sql --database-name=default
 ## Rollback initial migration version
 
 ```
-  hasura migrate apply --version 1672581457 --type down --database-name=default
+hasura migrate apply --version 1672581457 --type down --database-name=default
 ```
 
 ## Reset database
