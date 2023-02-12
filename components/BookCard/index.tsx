@@ -1,5 +1,5 @@
 import { Image } from 'semantic-ui-react'
-import styles from '../../styles/BookCard.module.scss'
+import styles from './BookCard.module.scss'
 
 interface Props {
   bookImg: String

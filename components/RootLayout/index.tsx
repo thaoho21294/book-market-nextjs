@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../Navbar'
-import styles from '../../styles/RootLayout.module.scss'
+import styles from './RootLayout.module.scss'
 
 const RootLayout = ({ children }: React.PropsWithChildren) => {
   return (
