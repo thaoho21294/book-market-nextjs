@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Dropdown, Icon, Image, Input, Menu } from 'semantic-ui-react'
 import { useFetchUser } from '../../lib/user'
 
+// temporily use for testing
 const Navbar = () => {
   const { user, loading } = useFetchUser({ required: false })
   const router = useRouter()

@@ -1,6 +1,6 @@
 import { useField } from 'formik'
 import { Form, FormInputProps } from 'semantic-ui-react'
-import { getFieldMetaError } from '../../utils/formikHelpers'
+import { getFieldMetaError } from '../../../utils/formikHelpers'
 
 interface Props extends FormInputProps {
   label?: string
