@@ -1,12 +1,36 @@
-import React from 'react'
+import { Icon } from 'semantic-ui-react'
+import styles from './Header.module.scss'
+import classNames from 'classnames'
+import { useFetchUser } from '../../../lib/user'
 import { Navigation } from '../../ui'
 
-const Header = () => {
+// temporily use for testing
+const Navbar = () => {
+  const { loading } = useFetchUser({ required: false })
+
+  if (loading) {
+    return <>Loading...</>
+  }
+
   return (
-    <header>
-      branch icon <Navigation /> other icons
-    </header>
+    <div className={styles['headerContainer']}>
+      <header className={styles['header']}>
+        <a href="#" className={classNames(styles['navIcon'], styles['logo'])}>
+          <Icon name="book" size="large" circular color="green"></Icon>
+        </a>
+        <Navigation />
+        <a href="#" className={styles['navIcon']}>
+          <Icon size="large" name="search" />
+        </a>
+        <a
+          href="#"
+          className={classNames(styles['navIcon'], styles['cartButton'])}
+        >
+          <Icon size="large" name="cart"></Icon>
+        </a>
+      </header>
+    </div>
   )
 }
 
-export default Header
+export default Navbar

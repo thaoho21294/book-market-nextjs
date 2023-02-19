@@ -1,4 +1,4 @@
-.header-container {
+.headerContainer {
   position: sticky;
   top: 0;
   background-color: #fff;
@@ -9,31 +9,6 @@
     grid-template-columns: 5% 1fr min-content min-content;
     .logo {
       grid-area: logo;
-    }
-    .navHeader {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      overflow-x: auto;
-      white-space: nowrap;
-      grid-area: navHeader;
-
-      .navLink {
-        align-items: center;
-        cursor: pointer;
-        display: flex;
-        height: var(--size-input);
-        padding-left: 14px;
-        padding-right: 15px;
-        text-decoration: none;
-        font-weight: 500;
-        grid-area: navLink;
-        border: 3px solid transparent;
-      }
-      .navLink.isActive {
-        color: #088413;
-        border-bottom: 3px solid #088413;
-      }
     }
     .navIcon {
       display: flex;
