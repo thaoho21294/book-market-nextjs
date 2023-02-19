@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import { ReactElement, ReactNode, useState } from 'react'
 import { NextPage } from 'next'
-import RootLayout from '../components/RootLayout'
+import { MainLayout } from '../components/common'
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/globals.css'
 
@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const [queryClient] = useState(() => new QueryClient())
 
   const getLayout =
-    Component.getLayout ?? ((page) => <RootLayout>{page}</RootLayout>)
+    Component.getLayout ?? ((page) => <MainLayout>{page}</MainLayout>)
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>

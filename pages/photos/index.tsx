@@ -1,7 +1,7 @@
 import { AdvancedImage, responsive } from '@cloudinary/react'
 import { useRef } from 'react'
 import useUploadImage from '../../hooks/useUploadImage'
-import styles from '../../styles/Photos.module.scss'
+import styles from './Photos.module.scss'
 
 const PhotoUploader = () => {
   const { imagesUploaded, upload, setFiles } = useUploadImage()

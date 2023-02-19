@@ -5,6 +5,7 @@ import { useFetchUser } from '../../lib/user'
 import styles from './Navbar.module.scss'
 import classNames from 'classnames'
 
+// temporily use for testing
 const Navbar = () => {
   const { loading } = useFetchUser({ required: false })
   console.log(styles)
