@@ -1,7 +1,7 @@
 import React from 'react'
 import { Book } from '../../../types'
 import BookCard from '../BookCard'
-import styles from './Booklist.module.css'
+import styles from './BookList.module.css'
 
 const BookList = ({ books }: { books: Book[] }) => {
   return (
