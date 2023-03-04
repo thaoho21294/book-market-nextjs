@@ -1,4 +1,4 @@
-.listingContainerStyle {
+.listingContainer {
   display: grid;
   grid-template-columns: var(--product-grid);
   place-items: center;

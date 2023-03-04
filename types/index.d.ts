@@ -5,6 +5,11 @@ declare global {
   }
 }
 
+export type District = {
+  id: string
+  name: string
+}
+
 export type User = {
   id: string
   email: string
@@ -15,6 +20,7 @@ export type User = {
   sid: string
   sub: string
   description: string
+  district: District
   updated_at: string
 }
 
