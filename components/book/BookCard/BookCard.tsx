@@ -16,6 +16,7 @@ const BookCard = ({ book }: { book: Book; eager: boolean }) => {
     price,
     pictures: [firstPicture],
   } = book
+
   return (
     <Link
       className={styles.bookCard}
