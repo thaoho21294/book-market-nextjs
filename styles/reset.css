@@ -64,7 +64,7 @@ sup {
 }
 
 img {
-  border-style: none;
+  border-radius: var(--radius-sm);
 }
 
 button,
