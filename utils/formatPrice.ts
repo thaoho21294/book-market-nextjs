@@ -1,8 +1,8 @@
 /**
  * Formats a currency according to the user's locale
- * @param {string} currency The ISO currency code
  * @param {number} value The amount to format
- * @returns
+ * @param {string} currency The ISO currency code
+ * @returns price with currency
  */
 export const formatPrice = (value: number, currency = 'VND') =>
   Intl.NumberFormat('de-DE', {
