@@ -7,7 +7,7 @@ import { formatPrice } from 'utils/formatPrice'
 
 import styles from './BookCard.module.scss'
 
-const BookCard = ({ book }: { book: Book; eager: boolean }) => {
+const BookCard = ({ book }: { book: Book }) => {
   const {
     title,
     user: {
