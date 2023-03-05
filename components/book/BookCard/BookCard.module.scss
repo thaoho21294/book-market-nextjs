@@ -1,17 +1,33 @@
-.book-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.bookCard {
+  cursor: pointer;
 
-  .title {
-    font-weight: 500;
-    font-size: 16px;
+  .image {
+    margin-bottom: var(--space-md);
   }
 
-  .price {
-    font-weight: 500;
-    font-size: 16px;
-    color: red;
+  .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--semibold);
+
+    .district {
+      font-size: var(--text-sm);
+      color: var(--text-color-secondary);
+    }
+
+    .heading {
+      width: 100%;
+      font-size: var(--text-lg);
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: var(--dense);
+    }
+    .price {
+      color: var(--green-80);
+      font-size: var(--text-md);
+    }
   }
 }
