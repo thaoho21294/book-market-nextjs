@@ -16,7 +16,7 @@ const Navbar = () => {
     <div className={styles['headerContainer']}>
       <header className={styles['header']}>
         <a href="#" className={classNames(styles['navIcon'], styles['logo'])}>
-          <Icon name="book" size="large" circular color="green"></Icon>
+          <Icon name="book" size="large" color="green"></Icon>
         </a>
         <Navigation />
         <a href="#" className={styles['navIcon']}>

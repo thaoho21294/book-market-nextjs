@@ -2,13 +2,23 @@
   position: sticky;
   top: 0;
   background-color: #fff;
-  z-index: 10;
+  z-index: 1;
   padding-bottom: 20px;
+  align-items: center;
   .header {
     display: grid;
-    grid-template-columns: 5% 1fr min-content min-content;
+    align-items: center;
+    grid-template-columns: var(--size-input) 1fr min-content min-content;
+    padding: var(--size-gap) var(--size-gutter);
+    width: 100%;
+
     .logo {
+      align-items: center;
+      display: flex;
       grid-area: logo;
+      height: 100%;
+      justify-content: center;
+      width: 100%;
     }
     .navIcon {
       display: flex;
@@ -16,10 +26,23 @@
       padding: 15px;
     }
     .searchButton {
+      color: var(--text-color-secondary);
+      display: grid;
       grid-area: searchButton;
+      height: var(--size-input);
+      place-items: center;
+      width: var(--size-input);
     }
     .cartButton {
+      align-items: center;
+      align-self: center;
+      color: var(--text-color-secondary);
+      display: flex;
       grid-area: cartButton;
+      height: var(--size-input);
+      justify-content: center;
+      position: relative;
+      width: var(--size-input);
     }
   }
 }

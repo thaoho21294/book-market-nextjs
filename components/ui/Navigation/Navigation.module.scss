@@ -1,25 +1,27 @@
 .navigation {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    white-space: nowrap;
-    grid-area: navHeader;
+  align-self: stretch;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  white-space: nowrap;
+  grid-area: navHeader;
+  font-weight: var(--medium);
 
-    .navLink {
-      align-items: center;
-      cursor: pointer;
-      display: flex;
-      height: var(--size-input);
-      padding-left: 14px;
-      padding-right: 15px;
-      text-decoration: none;
-      font-weight: 500;
-      grid-area: navLink;
-      border: 3px solid transparent;
-    }
-    .navLink.isActive {
-      color: #088413;
-      border-bottom: 3px solid #088413;
-    }
+  .navLink {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    height: var(--size-input);
+    padding-left: 14px;
+    padding-right: 15px;
+    text-decoration: none;
+    font-weight: 500;
+    grid-area: navLink;
+    border: 3px solid transparent;
   }
+  .navLink.isActive {
+    color: #088413;
+    border-bottom: 3px solid #088413;
+  }
+}
