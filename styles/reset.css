@@ -8,20 +8,6 @@ html {
   touch-action: manipulation;
 }
 
-body {
-  position: relative;
-  min-height: 100%;
-  font-feature-settings: "kern";
-}
-
-*,
-*::before,
-*::after {
-  border-width: 0;
-  border-style: solid;
-  box-sizing: border-box;
-}
-
 main {
   display: block;
 }
@@ -42,9 +28,7 @@ samp {
 }
 
 a {
-  background-color: transparent;
   color: inherit;
-  text-decoration: inherit;
 }
 
 abbr[title] {
@@ -80,7 +64,7 @@ sup {
 }
 
 img {
-  border-style: none;
+  border-radius: var(--radius-sm);
 }
 
 button,
