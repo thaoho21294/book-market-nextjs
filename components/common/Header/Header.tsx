@@ -19,7 +19,7 @@ const Navbar = () => {
           <Icon name="book" size="large" color="green"></Icon>
         </a>
         <Navigation />
-        <a href="#" className={styles.navIcon}>
+        <a href="#" className={classNames(styles.navIcon, styles.searchButton)}>
           <Icon size="large" name="search" />
         </a>
         <a href="#" className={classNames(styles.navIcon, styles.cartButton)}>
