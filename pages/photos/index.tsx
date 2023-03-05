@@ -13,7 +13,7 @@ const PhotoUploader = () => {
   }
 
   return (
-    <div className={styles['container']}>
+    <div className={styles.container}>
       <input
         ref={ref}
         type="file"
@@ -25,7 +25,7 @@ const PhotoUploader = () => {
       />
       <br />
       <button onClick={() => upload(resetInput)}>Upload</button>
-      <div className={styles['images']}>
+      <div className={styles.images}>
         {imagesUploaded.map((img, index) => (
           <AdvancedImage key={index} cldImg={img} plugins={[responsive()]} />
         ))}

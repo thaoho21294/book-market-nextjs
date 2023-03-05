@@ -15,8 +15,8 @@ const Navigation = () => {
             setActiveItem(id)
           }}
           className={classNames(
-            styles['navLink'],
-            id === activeItem ? styles['isActive'] : ''
+            styles.navLink,
+            id === activeItem ? styles.isActive : ''
           )}
         >
           {name}
@@ -24,7 +24,7 @@ const Navigation = () => {
       )),
     [activeItem]
   )
-  return <nav className={styles['navigation']}>{el}</nav>
+  return <nav className={styles.navigation}>{el}</nav>
 }
 
 export default Navigation

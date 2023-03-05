@@ -13,19 +13,16 @@ const Navbar = () => {
   }
 
   return (
-    <div className={styles['headerContainer']}>
-      <header className={styles['header']}>
-        <a href="#" className={classNames(styles['navIcon'], styles['logo'])}>
+    <div className={styles.headerContainer}>
+      <header className={styles.header}>
+        <a href="#" className={classNames(styles.navIcon, styles.logo)}>
           <Icon name="book" size="large" color="green"></Icon>
         </a>
         <Navigation />
-        <a href="#" className={styles['navIcon']}>
+        <a href="#" className={styles.navIcon}>
           <Icon size="large" name="search" />
         </a>
-        <a
-          href="#"
-          className={classNames(styles['navIcon'], styles['cartButton'])}
-        >
+        <a href="#" className={classNames(styles.navIcon, styles.cartButton)}>
           <Icon size="large" name="cart"></Icon>
         </a>
       </header>
