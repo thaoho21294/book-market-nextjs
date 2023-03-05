@@ -4,8 +4,7 @@ import classNames from 'classnames'
 import { useFetchUser } from '../../../lib/user'
 import { Navigation } from '../../ui'
 
-// temporily use for testing
-const Navbar = () => {
+const Header = () => {
   const { loading } = useFetchUser({ required: false })
 
   if (loading) {
@@ -30,4 +29,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Header
