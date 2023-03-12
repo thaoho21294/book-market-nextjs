@@ -8,8 +8,8 @@ import styles from './BookList.module.css'
 const BookList = ({ books }: { books: Book[] }) => {
   return (
     <div className={styles.listingContainer}>
-      {books.map((b) => (
-        <BookCard book={b} key={b.id} />
+      {books.map((book) => (
+        <BookCard book={book} key={book.id} />
       ))}
     </div>
   )

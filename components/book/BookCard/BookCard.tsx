@@ -28,7 +28,7 @@ const BookCard = ({ book }: { book: Book }) => {
       </div>
       <div className={styles.details}>
         <div className={styles.district}>{districtName}</div>
-        <h2 className={styles.heading}>{title}</h2>
+        <h2 className={styles.title}>{title}</h2>
         <div className={styles.price}>{formatPrice(price)}</div>
       </div>
     </Link>
