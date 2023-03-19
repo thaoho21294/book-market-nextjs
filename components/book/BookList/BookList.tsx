@@ -6,6 +6,7 @@ import BookCard from '../BookCard'
 import styles from './BookList.module.css'
 
 // add a comment
+// more comment
 const BookList = ({ books }: { books: Book[] }) => {
   return (
     <div className={styles.listingContainer}>
