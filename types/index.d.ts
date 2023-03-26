@@ -13,15 +13,15 @@ export type District = {
 export type User = {
   id: string
   email: string
-  emailVerified: boolean
-  name: string
-  nickname: string
-  picture: string
-  sid: string
-  sub: string
-  description: string
+  emailVerified?: boolean
+  name?: string
+  nickname?: string
+  picture?: string
+  sid?: string
+  sub?: string
+  description?: string
   district: District
-  updated_at: string
+  updated_at?: string
 }
 
 export type Genre = {
@@ -32,9 +32,9 @@ export type Genre = {
 export type Book = {
   id: number
   title: string
-  author: string
+  author?: string
   price: number
-  originalPrice: number
+  originalPrice?: number
   description: string
   pictures: string[]
   isSold: boolean

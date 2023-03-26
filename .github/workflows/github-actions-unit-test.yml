@@ -1,0 +1,19 @@
+name: Unit Tests
+run-name: ${{ github.actor }} is runing unit tests
+on:
+  push:
+    paths:
+      - '.github/workflows/**'
+      - 'components/**'
+      - 'hooks/**'
+      - 'lib/**'
+      - 'pages/**'
+      - 'test-utils/**'
+      - 'utils/**'
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: yarn
+      - run: yarn test:ci
