@@ -4,26 +4,17 @@
   background-color: #fff;
   z-index: 1;
   padding-bottom: 20px;
-  align-items: center;
   .header {
     display: grid;
-    align-items: center;
     grid-template-columns: var(--size-input) 1fr min-content min-content;
     padding: var(--size-gap) var(--size-gutter);
     width: 100%;
 
-    .logo {
-      align-items: center;
-      display: flex;
-      grid-area: logo;
-      height: 100%;
-      justify-content: center;
-      width: 100%;
-    }
     .navIcon {
       display: flex;
       align-items: center;
       padding: 15px;
+      grid-area: logo;
     }
     .searchButton {
       color: var(--text-color-secondary);
