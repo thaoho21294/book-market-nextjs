@@ -13,8 +13,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {isLoading && <p>Loadding</p>}
-        {data && <BookList books={data.books} />}
+        {isLoading && <p>Loading</p>}
+        {!isLoading && data && <BookList books={data.books} />}
       </main>
     </>
   )
