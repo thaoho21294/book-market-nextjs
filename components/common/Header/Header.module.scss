@@ -17,14 +17,20 @@
     }
     .logo {
       grid-area: logo;
+      color: var(--text-color-secondary);
+    }
+    .logo:hover {
+      color: var(--text-color);
     }
     .searchButton {
       color: var(--text-color-secondary);
       display: grid;
       grid-area: searchButton;
-      height: var(--size-input);
       place-items: center;
       width: var(--size-input);
+    }
+    .searchButton:hover {
+      color: var(--text-color);
     }
     .cartButton {
       align-items: center;
@@ -37,6 +43,24 @@
       position: relative;
       width: var(--size-input);
     }
+    .cartButton:hover {
+      color: var(--text-color);
+    }
+  }
+
+  .header::after {
+    grid-area: navHeader;
+    content: '';
+    display: block;
+    width: var(--space-2xl);
+    z-index: 1;
+    align-self: stretch;
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 1)
+    );
+    justify-self: flex-end;
   }
 }
 
@@ -50,9 +74,5 @@
     grid-template-areas:
       'logo . searchButton cartButton'
       'navHeader navHeader navHeader navHeader';
-  }
-
-  .navHeader {
-    margin: 5px;
   }
 }

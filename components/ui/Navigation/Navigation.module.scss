@@ -13,13 +13,17 @@
     cursor: pointer;
     display: flex;
     height: var(--size-input);
-    padding-left: 14px;
-    padding-right: 15px;
-    font-weight: 500;
-    border: 3px solid transparent;
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+    color: var(--text-color-secondary);
+  }
+  .navLink:hover {
+    color: var(--text-color);
   }
   .navLink.isActive {
-    color: #088413;
-    border-bottom: 3px solid #088413;
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
   }
 }

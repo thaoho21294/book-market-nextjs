@@ -15,7 +15,7 @@ const Header = () => {
     <div className={styles.headerContainer}>
       <header className={styles.header}>
         <a href="#" className={classNames(styles.navIcon, styles.logo)}>
-          <Icon name="book" size="large" color="green"></Icon>
+          <Icon name="book" size="large"></Icon>
         </a>
         <Navigation />
         <a href="#" className={classNames(styles.navIcon, styles.searchButton)}>
