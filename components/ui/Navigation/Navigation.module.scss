@@ -16,14 +16,16 @@
     padding-left: var(--space-md);
     padding-right: var(--space-md);
     color: var(--text-color-secondary);
-  }
-  .navLink:hover {
-    color: var(--text-color);
-  }
-  .navLink.isActive {
-    color: var(--primary);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+
+    &:hover {
+      color: var(--text-color);
+    }
+
+    &.isActive {
+      color: var(--primary);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
   }
 }
