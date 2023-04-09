@@ -14,14 +14,14 @@ const Header = () => {
   return (
     <div className={styles.headerContainer}>
       <header className={styles.header}>
-        <a href="#" className={classNames(styles.navIcon, styles.logo)}>
+        <a href="#" className={classNames(styles.icon, styles.logo)}>
           <Icon name="book" size="large"></Icon>
         </a>
         <Navigation />
-        <a href="#" className={classNames(styles.navIcon, styles.searchButton)}>
+        <a href="#" className={classNames(styles.icon, styles.searchButton)}>
           <Icon size="large" name="search" />
         </a>
-        <a href="#" className={classNames(styles.navIcon, styles.cartButton)}>
+        <a href="#" className={classNames(styles.icon, styles.cartButton)}>
           <Icon size="large" name="cart"></Icon>
         </a>
       </header>
