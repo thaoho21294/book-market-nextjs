@@ -1,7 +1,6 @@
 .headerContainer {
   position: sticky;
   top: 0;
-  background-color: #fff;
   z-index: 1;
 
   .header {
@@ -12,11 +11,14 @@
       'logo . searchButton cartButton'
       'navHeader navHeader navHeader navHeader';
     width: 100%;
+    background-color: var(--background);
 
-    .navIcon {
-      display: flex;
-      align-items: center;
-      padding: 15px;
+    .icon {
+      display: grid;
+      grid-area: searchButton;
+      place-items: center;
+      width: var(--size-input);
+      color: var(--text-color-secondary);
 
       &:hover {
         color: var(--text-color);
@@ -25,27 +27,14 @@
 
     .logo {
       grid-area: logo;
-      color: var(--text-color-secondary);
     }
 
     .searchButton {
-      color: var(--text-color-secondary);
-      display: grid;
       grid-area: searchButton;
-      place-items: center;
-      width: var(--size-input);
     }
 
     .cartButton {
-      align-items: center;
-      align-self: center;
-      color: var(--text-color-secondary);
-      display: flex;
       grid-area: cartButton;
-      height: var(--size-input);
-      justify-content: center;
-      position: relative;
-      width: var(--size-input);
     }
 
     @media (min-width: 640px) {
