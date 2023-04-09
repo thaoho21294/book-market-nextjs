@@ -3,10 +3,14 @@
   top: 0;
   background-color: #fff;
   z-index: 1;
+
   .header {
     display: grid;
     grid-template-columns: var(--size-input) 1fr min-content min-content;
     padding: var(--size-gap) var(--size-gutter);
+    grid-template-areas:
+      'logo . searchButton cartButton'
+      'navHeader navHeader navHeader navHeader';
     width: 100%;
 
     .navIcon {
@@ -14,13 +18,16 @@
       align-items: center;
       padding: 15px;
     }
+
+    .navIcon:hover {
+      color: var(--text-color);
+    }
+
     .logo {
       grid-area: logo;
       color: var(--text-color-secondary);
     }
-    .logo:hover {
-      color: var(--text-color);
-    }
+
     .searchButton {
       color: var(--text-color-secondary);
       display: grid;
@@ -28,9 +35,7 @@
       place-items: center;
       width: var(--size-input);
     }
-    .searchButton:hover {
-      color: var(--text-color);
-    }
+
     .cartButton {
       align-items: center;
       align-self: center;
@@ -42,17 +47,16 @@
       position: relative;
       width: var(--size-input);
     }
-    .cartButton:hover {
-      color: var(--text-color);
+
+    @media (min-width: 640px) {
+      grid-template-areas: 'logo navHeader searchButton cartButton';
     }
   }
 
   .header::after {
-    grid-area: navHeader;
     content: '';
     display: block;
     width: var(--space-2xl);
-    z-index: 1;
     align-self: stretch;
     background-image: linear-gradient(
       90deg,
@@ -60,18 +64,5 @@
       rgba(255, 255, 255, 1)
     );
     justify-self: flex-end;
-  }
-}
-
-@media (min-width: 640px) {
-  .header {
-    grid-template-areas: 'logo navHeader searchButton cartButton';
-  }
-}
-@media only screen and (max-width: 640px) {
-  .header {
-    grid-template-areas:
-      'logo . searchButton cartButton'
-      'navHeader navHeader navHeader navHeader';
   }
 }
