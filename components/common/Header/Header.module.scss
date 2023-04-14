@@ -1,0 +1,57 @@
+.headerContainer {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  .header {
+    display: grid;
+    grid-template-columns: var(--size-input) 1fr min-content min-content;
+    padding: var(--size-gap) var(--size-gutter);
+    grid-template-areas:
+      'logo . searchButton cartButton'
+      'navHeader navHeader navHeader navHeader';
+    width: 100%;
+    background-color: var(--background);
+
+    .icon {
+      display: grid;
+      grid-area: searchButton;
+      place-items: center;
+      width: var(--size-input);
+      color: var(--text-color-secondary);
+
+      &:hover {
+        color: var(--text-color);
+      }
+    }
+
+    .logo {
+      grid-area: logo;
+    }
+
+    .searchButton {
+      grid-area: searchButton;
+    }
+
+    .cartButton {
+      grid-area: cartButton;
+    }
+
+    @media (min-width: 640px) {
+      grid-template-areas: 'logo navHeader searchButton cartButton';
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: var(--space-2xl);
+      align-self: stretch;
+      background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 1)
+      );
+      justify-self: flex-end;
+    }
+  }
+}

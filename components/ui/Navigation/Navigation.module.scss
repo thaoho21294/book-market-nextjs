@@ -1,0 +1,31 @@
+.navigation {
+  align-self: stretch;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  white-space: nowrap;
+  grid-area: navHeader;
+  font-weight: var(--medium);
+
+  .navLink {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    height: var(--size-input);
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+    color: var(--text-color-secondary);
+
+    &:hover {
+      color: var(--text-color);
+    }
+
+    &.isActive {
+      color: var(--primary);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+  }
+}
