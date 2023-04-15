@@ -4,7 +4,7 @@ import { clientGraphqlRequest } from 'lib/harsura'
 import { Genre } from 'types'
 
 const genresQueryDocument = gql`
-  query MyQuery {
+  query {
     genres {
       id
       name
