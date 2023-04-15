@@ -1,8 +1,9 @@
 import { Icon } from 'semantic-ui-react'
 import styles from './Header.module.scss'
 import classNames from 'classnames'
-import { useFetchUser } from '../../../lib/user'
-import { Navigation } from '../../ui'
+import { useFetchUser } from 'lib/user'
+import { Navigation } from 'components/ui'
+import Link from 'next/link'
 
 const Header = () => {
   const { loading } = useFetchUser({ required: false })
@@ -14,16 +15,16 @@ const Header = () => {
   return (
     <div className={styles.headerContainer}>
       <header className={styles.header}>
-        <a href="#" className={classNames(styles.icon, styles.logo)}>
-          <Icon name="book" size="large"></Icon>
-        </a>
+        <Link href="/" className={classNames(styles.icon, styles.logo)}>
+          <Icon name="book" size="large" />
+        </Link>
         <Navigation />
-        <a href="#" className={classNames(styles.icon, styles.searchButton)}>
+        <Link href="#" className={classNames(styles.icon, styles.searchButton)}>
           <Icon size="large" name="search" />
-        </a>
-        <a href="#" className={classNames(styles.icon, styles.cartButton)}>
-          <Icon size="large" name="cart"></Icon>
-        </a>
+        </Link>
+        <Link href="#" className={classNames(styles.icon, styles.cartButton)}>
+          <Icon size="large" name="cart" />
+        </Link>
       </header>
     </div>
   )

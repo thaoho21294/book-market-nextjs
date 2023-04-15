@@ -1,5 +1,5 @@
-import axios from '../lib/axios'
-import { cloud, getUploadUrl } from '../lib/cloudinary-utils'
+import axios from 'lib/axios'
+import { cloud, getUploadUrl } from 'lib/cloudinary-utils'
 import { useState } from 'react'
 import { CloudinaryImage } from '@cloudinary/url-gen'
 

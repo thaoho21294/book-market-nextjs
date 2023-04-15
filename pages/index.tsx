@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import { BookList } from '../components/book'
-import { useBooks } from '../hooks/useBooks'
+import { BookList } from 'components/book'
+import { useBooks } from 'hooks/useBooks'
 
 export default function Home() {
   const { data, isLoading } = useBooks()
