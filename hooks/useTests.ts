@@ -1,4 +1,4 @@
-import { clientGraphqlRequest } from '../lib/harsura'
+import { clientGraphqlRequest } from 'lib/harsura'
 import { gql } from 'graphql-request'
 import { useQuery } from '@tanstack/react-query'
 

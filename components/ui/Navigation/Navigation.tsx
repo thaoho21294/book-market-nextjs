@@ -1,16 +1,18 @@
 import classNames from 'classnames'
 import { useMemo, useState } from 'react'
-import { menuItems } from '../../../constants'
 import styles from './Navigation.module.scss'
+import useGenres from 'hooks/useGenres'
+import Link from 'next/link'
 
 const Navigation = () => {
-  const [activeItem, setActiveItem] = useState<null | number>(null)
+  const { data } = useGenres()
+  const [activeItem, setActiveItem] = useState<string>()
   const el = useMemo(
     () =>
-      menuItems.map(({ name, url, id }, index) => (
-        <a
+      data?.genres.map(({ name, id }, index) => (
+        <Link
           key={index}
-          href={url}
+          href={`/products/${id}`}
           onClick={() => {
             setActiveItem(id)
           }}
@@ -20,9 +22,9 @@ const Navigation = () => {
           )}
         >
           {name}
-        </a>
+        </Link>
       )),
-    [activeItem]
+    [data?.genres, activeItem]
   )
   return <nav className={styles.navigation}>{el}</nav>
 }

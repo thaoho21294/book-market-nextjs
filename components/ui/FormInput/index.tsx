@@ -1,6 +1,5 @@
-import { useField } from 'formik'
+import { useController } from 'react-hook-form'
 import { Form, FormInputProps } from 'semantic-ui-react'
-import { getFieldMetaError } from '../../../utils/formikHelpers'
 
 interface Props extends FormInputProps {
   label?: string
@@ -9,8 +8,8 @@ interface Props extends FormInputProps {
 }
 
 const FormInput = ({ name, label, className, ...otherProps }: Props) => {
-  const [field, meta] = useField({ name })
-  const errorMessage = getFieldMetaError(meta)
+  const { field, fieldState } = useController({ name })
+  const errorMessage = fieldState.error
   return (
     <Form.Input
       className={className}

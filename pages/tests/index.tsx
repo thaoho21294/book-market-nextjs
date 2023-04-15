@@ -1,7 +1,7 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useState } from 'react'
-import { useTests, fetchTests, DEFAULT_TESTS_LIMIT } from '../../hooks/useTests'
+import { useTests, fetchTests, DEFAULT_TESTS_LIMIT } from 'hooks/useTests'
 
 function Tests({
   isError,

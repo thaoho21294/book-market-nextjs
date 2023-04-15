@@ -27,6 +27,8 @@ export type User = {
 export type Genre = {
   id: string
   name: string
+  slug: string
+
 }
 
 export type Book = {
