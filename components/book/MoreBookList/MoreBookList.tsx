@@ -1,6 +1,7 @@
+import { useState } from 'react'
+
 import { DEFAULT_BOOKS_LIMIT, useBooks } from 'hooks/useBooks'
 import { BookList } from 'components/book'
-import { useState } from 'react'
 
 type MoreBookListProps = {
   isError: any
@@ -12,7 +13,7 @@ const MoreBookList = ({ isError, genreId }: MoreBookListProps) => {
   const { data, isLoading } = useBooks(limit, genreId)
 
   const onClickMore = () => {
-    setLimit(limit + 2)
+    setLimit(limit + DEFAULT_BOOKS_LIMIT)
   }
 
   return (

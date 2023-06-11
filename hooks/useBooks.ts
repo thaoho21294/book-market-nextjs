@@ -1,6 +1,8 @@
-import { clientGraphqlRequest } from '../lib/harsura'
 import { gql } from 'graphql-request'
 import { useQuery } from '@tanstack/react-query'
+
+import { clientGraphqlRequest } from 'lib/harsura'
+
 import { Book } from '../types'
 
 export const DEFAULT_BOOKS_LIMIT = 5

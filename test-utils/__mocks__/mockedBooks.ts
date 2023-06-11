@@ -33,12 +33,35 @@ export const book2: Book = {
   pictures: ['https://link-to-image-2'],
   isSold: false,
   genre: {
-    id: 'genre-1',
-    name: 'Tam ly',
+    id: 'genre-2',
+    name: 'Tieng Anh',
   },
   user: {
     id: 'user-1',
     email: 'user1@gmail.com',
+    district: {
+      id: 'district-2',
+      name: 'Quan 2',
+    },
+  },
+}
+
+export const book3: Book = {
+  id: 3,
+  title: 'Book 3',
+  author: 'Thanh',
+  price: 30000,
+  originalPrice: 50000,
+  description: 'This is book 3',
+  pictures: ['https://link-to-image-1'],
+  isSold: false,
+  genre: {
+    id: 'genre-2',
+    name: 'Tieng Anh',
+  },
+  user: {
+    id: 'user-2',
+    email: 'user2@gmail.com',
     district: {
       id: 'district-2',
       name: 'Quan 2',
