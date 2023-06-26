@@ -1,5 +1,5 @@
 import { gql } from 'graphql-request'
-import { useQuery } from '@tanstack/react-query'
+// import { useQuery } from '@tanstack/react-query'
 
 import { clientGraphqlRequest } from 'lib/harsura'
 
@@ -62,12 +62,12 @@ export const fetchBooksByGenre = (
   })
 }
 
-export const useBooks = (
-  limit: number = DEFAULT_BOOKS_LIMIT,
-  genreIds?: string | string[]
-) => {
-  // console.log('key', ['books', limit, genreIds])
-  return useQuery(['books', limit, genreIds], () => fetchBooks(limit, genreIds))
-}
+// export const useBooks = (
+//   limit: number = DEFAULT_BOOKS_LIMIT,
+//   genreIds?: string | string[]
+// ) => {
+//   // console.log('key', ['books', limit, genreIds])
+//   return useQuery(['books', limit, genreIds], () => fetchBooks(limit, genreIds))
+// }
 
-export default useBooks
+// export default useBooks

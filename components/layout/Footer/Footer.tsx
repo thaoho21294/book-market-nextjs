@@ -1,6 +1,8 @@
+'use client'
+
 import styles from './Footer.module.scss'
 
-const Footer = () => {
+export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>
@@ -12,5 +14,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer

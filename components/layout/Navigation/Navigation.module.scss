@@ -21,7 +21,7 @@
       color: var(--text-color);
     }
 
-    &.isActive {
+    &:active {
       color: var(--primary);
       text-decoration: underline;
       text-decoration-thickness: 2px;

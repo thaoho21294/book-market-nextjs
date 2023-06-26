@@ -1,29 +1,22 @@
-import { useState } from 'react'
-
-import { DEFAULT_BOOKS_LIMIT, useBooks } from 'hooks/useBooks'
+import { DEFAULT_BOOKS_LIMIT, fetchBooks } from 'hooks/useBooks'
 import { BookList } from 'components/book'
 
-type MoreBookListProps = {
-  isError: any
+export default async function MoreBookList({
+  genreId,
+}: {
   genreId?: string | string[]
-}
+}) {
+  const limit = DEFAULT_BOOKS_LIMIT
+  let data = await fetchBooks(limit, genreId)
 
-const MoreBookList = ({ isError, genreId }: MoreBookListProps) => {
-  const [limit, setLimit] = useState(DEFAULT_BOOKS_LIMIT)
-  const { data, isLoading } = useBooks(limit, genreId)
-
-  const onClickMore = () => {
-    setLimit(limit + DEFAULT_BOOKS_LIMIT)
+  const onClickMore = async () => {
+    data = await fetchBooks(limit + 2, genreId)
   }
 
   return (
     <div>
-      {isError && <p>Error happens</p>}
-      {isLoading && <p>Loading</p>}
       {data && <BookList books={data.books} />}
       <button onClick={onClickMore}>More Books</button>
     </div>
   )
 }
-
-export default MoreBookList

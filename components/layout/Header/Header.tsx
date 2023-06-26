@@ -1,16 +1,9 @@
 import { Icon } from 'semantic-ui-react'
 import styles from './Header.module.scss'
 import classNames from 'classnames'
-import { useFetchUser } from '../../../lib/user'
-import { Navigation } from '../../ui'
+import { Navigation } from '../../form'
 
-const Header = () => {
-  const { loading } = useFetchUser({ required: false })
-
-  if (loading) {
-    return <>Loading...</>
-  }
-
+export default async function Header() {
   return (
     <div className={styles.headerContainer}>
       <header className={styles.header}>
@@ -28,5 +21,3 @@ const Header = () => {
     </div>
   )
 }
-
-export default Header
