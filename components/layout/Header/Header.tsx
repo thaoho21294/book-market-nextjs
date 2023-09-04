@@ -1,9 +1,9 @@
-import { Icon } from 'semantic-ui-react'
+import { Icon } from 'components/semantic'
 import styles from './Header.module.scss'
 import classNames from 'classnames'
-import { Navigation } from '../../form'
+import Navigation from 'components/layout/Navigation/Navigation'
 
-export default async function Header() {
+export default function Header() {
   return (
     <div className={styles.headerContainer}>
       <header className={styles.header}>

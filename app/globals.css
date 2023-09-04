@@ -1,3 +1,6 @@
+@import url('../styles/reset.css');
+@import url('../styles/variables.css');
+
 body {
   font-family: var(--font-body);
   color: var(--text-color);

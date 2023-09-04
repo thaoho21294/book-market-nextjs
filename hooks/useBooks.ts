@@ -6,6 +6,7 @@ import { clientGraphqlRequest } from 'lib/harsura'
 import { Book } from '../types'
 
 export const DEFAULT_BOOKS_LIMIT = 5
+export const DEFAULT_BOOKS_LOAD = 2
 
 const returnedBooksFields = `
       id
@@ -30,35 +31,44 @@ const returnedBooksFields = `
 `
 
 const booksQueryDocument = gql`
-  query getBooks($limit: Int = 10) {
-    books(limit: $limit) {
+  query getBooks($limit: Int = 10, $offset: Int = 0 ) {
+    books(limit: $limit, offset: $offset, order_by: { id: asc }) {
       ${returnedBooksFields}
     }
   }
 `
 
 const booksQueryByGenreDocument = gql`
-  query getBooks($limit: Int = 10, $genreIds: [String!]) {
-      books(limit: $limit, where: { genre_id: { _in: $genreIds } }) {
+  query getBooks($limit: Int = 10, $genreIds: [String!], $offset: Int = 0) {
+      books(limit: $limit, where: { genre_id: { _in: $genreIds }, offset: $offset, order_by: { id: asc }}) {
         ${returnedBooksFields}
       }
     }
 `
 
-export const fetchBooks = (limit: number, genreIds?: string | string[]) => {
+export const fetchBooks = (
+  limit: number = DEFAULT_BOOKS_LIMIT,
+  genreIds?: string | string[],
+  offset?: number
+) => {
   if (genreIds) {
-    return fetchBooksByGenre(limit, genreIds)
+    return fetchBooksByGenre(limit, genreIds, offset)
   }
-  return clientGraphqlRequest<{ books: Book[] }>(booksQueryDocument, { limit })
+  return clientGraphqlRequest<{ books: Book[] }>(booksQueryDocument, {
+    limit,
+    offset,
+  })
 }
 
 export const fetchBooksByGenre = (
   limit: number,
-  genreIds?: string | string[]
+  genreIds?: string | string[],
+  offset?: number
 ) => {
   return clientGraphqlRequest<{ books: Book[] }>(booksQueryByGenreDocument, {
     limit,
     genreIds: typeof genreIds === 'string' ? [genreIds] : genreIds,
+    offset,
   })
 }
 

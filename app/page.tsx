@@ -1,7 +1,7 @@
 import Head from 'next/head'
-// import { MoreBookList } from 'components/book/MoreBookList'
+import MoreBook from 'components/book/MoreBookList/MoreBook'
 
-export default async function Home() {
+export default async function HomePage() {
   return (
     <>
       <Head>
@@ -9,7 +9,10 @@ export default async function Home() {
         <meta name="description" content="a page to seek old books" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>Hi there</main>
+      <main>
+        {/* @ts-expect-error Server Component*/}
+        <MoreBook />
+      </main>
     </>
   )
 }
