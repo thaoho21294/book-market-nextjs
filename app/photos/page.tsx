@@ -1,3 +1,5 @@
+'use client'
+
 import { AdvancedImage, responsive } from '@cloudinary/react'
 import { useRef } from 'react'
 import useUploadImage from '../../hooks/useUploadImage'

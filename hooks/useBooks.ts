@@ -32,7 +32,7 @@ const returnedBooksFields = `
 
 const booksQueryDocument = gql`
   query getBooks($limit: Int = 10, $offset: Int = 0 ) {
-    books(limit: $limit, offset: $offset, order_by: { id: asc }) {
+    books(limit: $limit, order_by: { id: asc }, offset: $offset) {
       ${returnedBooksFields}
     }
   }
@@ -40,7 +40,7 @@ const booksQueryDocument = gql`
 
 const booksQueryByGenreDocument = gql`
   query getBooks($limit: Int = 10, $genreIds: [String!], $offset: Int = 0) {
-      books(limit: $limit, where: { genre_id: { _in: $genreIds }, offset: $offset, order_by: { id: asc }}) {
+      books(limit: $limit,  order_by: { id: asc }, offset: $offset, where: { genre_id: { _in: $genreIds }}) {
         ${returnedBooksFields}
       }
     }

@@ -1,3 +1,5 @@
+// TODO: remove this testing component
+
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useState } from 'react'
