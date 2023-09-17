@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { MoreBook } from 'components/book/MoreBookList'
+import { MoreBook } from 'components/book/MoreBook'
 
 export default async function BookListByGenre({
   params,

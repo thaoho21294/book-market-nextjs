@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import MoreBook from 'components/book/MoreBookList/MoreBook'
+import MoreBook from 'components/book/MoreBook/MoreBook'
 
 export default async function HomePage() {
   return (
